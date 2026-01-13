@@ -1,25 +1,17 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "../components/layout/Layout";
-import Dashboard from "../pages/dashboard/Dashboard";
-import Motorcycles from "../pages/inventory/Motorcycles";
-import Leads from "../pages/crm/Leads";
-import Login from "../pages/auth/Login";
-import Sales from "../sales/Sales";
+import { Routes, Route } from "react-router-dom"
+import Home from "../pages/HomePage"
+import Login from "../pages/auth/Login"
+import MainLayout from "../layouts/MainLayout"
+import Nosotros from "../pages/Nosotros"
 
-export default function AppRouter() {
+export default function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path = "/nosotros" element={<Nosotros />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-
-        <Route element={<Layout />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/inventory" element={<Motorcycles />} />
-          <Route path="/crm" element={<Leads />} />
-          <Route path="/sales" element={<Sales />} />
-          
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+      </Route>
+    </Routes>
+  )
 }
